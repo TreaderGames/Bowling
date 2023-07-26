@@ -17,12 +17,12 @@ public class BallController : MonoBehaviour, IStateListener
     private void OnEnable()
     {
         StateHandler.Instance.AddStateListener(this);
-        StateHandler.Instance.ChangeState(GameState.Placement);
+        StateHandler.Instance.ChangeState(GameState.Direction);
     }
 
     private void OnDisable()
     {
-        StateHandler.Instance.RemoveStateListener(this);
+        StateHandler.Instance?.RemoveStateListener(this);
     }
 
     #endregion
@@ -35,8 +35,15 @@ public class BallController : MonoBehaviour, IStateListener
             if (ballStatesData.state.Equals(gameState))
             {
                 ballStatesData.stateObject.gameObject.SetActive(true);
-                ITakeData takeData = ballStatesData.stateObject as ITakeData;
-                takeData?.SendData(ball.transform);
+                try
+                {
+                    ITakeData takeData = ballStatesData.stateObject as ITakeData;
+                    takeData?.SendData(ball.transform);
+                }
+                finally
+                {
+                    //Do Nothing this just means the ball state object dosent need any data
+                }
             }
             else
             {

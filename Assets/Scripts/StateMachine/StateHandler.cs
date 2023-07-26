@@ -3,7 +3,8 @@ using System.Collections.Generic;
 public enum GameState
 {
     None,
-    Placement
+    Placement,
+    Direction
 }
 
 public class StateHandler : Singleton<StateHandler>

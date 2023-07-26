@@ -12,6 +12,7 @@ public class UIDirection : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space))
         {
             EventController.TriggerEvent(EventID.EVENT_DIRECTION_DECIDED, Vector3.Normalize(arrow.up));
+            StateHandler.Instance.ChangeState(GameState.Placement);
         }
     }
     #endregion

@@ -92,7 +92,7 @@ MonoBehaviour:
   _pointARotation: {x: 0, y: 0, z: -30}
   _pointBRotation: {x: 0, y: 0, z: 30}
   _speed: 1
-  _canPlay: 0
+  _canPlay: 1
 --- !u!1 &2130946347772630607
 GameObject:
   m_ObjectHideFlags: 0
