@@ -17,6 +17,7 @@ public class BallController : MonoBehaviour, IStateListener
     private void OnEnable()
     {
         StateHandler.Instance.AddStateListener(this);
+        StateHandler.Instance.ChangeState(GameState.Placement);
     }
 
     private void OnDisable()
@@ -31,13 +32,16 @@ public class BallController : MonoBehaviour, IStateListener
     {
         foreach(BallStatesData ballStatesData in ballStateObjects)
         {
-            if(ballStatesData.Equals(gameState))
+            if (ballStatesData.state.Equals(gameState))
             {
                 ballStatesData.stateObject.gameObject.SetActive(true);
-                ballStatesData.stateObject.GetComponent<ITakeData>().SendData(ball.transform);
+                ITakeData takeData = ballStatesData.stateObject as ITakeData;
+                takeData?.SendData(ball.transform);
             }
-
-            ballStatesData.stateObject.gameObject.SetActive(false);
+            else
+            {
+                ballStatesData.stateObject.gameObject.SetActive(false);
+            }
         }
     }
 

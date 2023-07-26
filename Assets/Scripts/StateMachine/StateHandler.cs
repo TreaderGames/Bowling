@@ -9,13 +9,9 @@ public enum GameState
 public class StateHandler : Singleton<StateHandler>
 {
     GameState currentState = GameState.None;
-    List<IStateListener> stateListeners;
+    List<IStateListener> stateListeners = new List<IStateListener>();
 
     #region Unity
-    private void Awake()
-    {
-        stateListeners = new List<IStateListener>();
-    }
     #endregion
 
     #region Public

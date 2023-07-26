@@ -1,21 +1,23 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BallPlacement : MonoBehaviour, ITakeData
 {
-    [SerializeField] Renderer placementPlane;
+    [SerializeField] Renderer _placementPlane;
+    [SerializeField] MoveTransformWithinPlaneBounds _moveTransform;
 
-    Transform ball;
+    #region Unity
+    private void OnDisable()
+    {
+        _moveTransform.StopMovement();
+    }
+    #endregion
 
     #region Public
     public void SendData(Object args)
     {
-        ball = (Transform)args;
+        Transform ball = (Transform)args;
+        _moveTransform.StartMovement(_placementPlane.bounds, ball);
     }
 
-    #endregion
-
-    #region Private
     #endregion
 }
