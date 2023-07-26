@@ -37,6 +37,8 @@ public class ScreenLoader : Singleton<ScreenLoader>
 
     [SerializeField] List<ScreenData> screenDataList = new List<ScreenData>();
 
+    AsyncOperationHandle<GameObject> currentScreen;
+
     #region Public
 
     public void LoadScreen(ScreenType screenType, Action<object> callback)
@@ -44,7 +46,12 @@ public class ScreenLoader : Singleton<ScreenLoader>
         ScreenData screenData = GetScreenData(screenType);
         AsyncOperationHandle<GameObject> opHandle = Addressables.LoadAssetAsync<GameObject>(screenData.assetRef);
         ResourceData resourceData = new ResourceData(screenType, callback, opHandle);
-        StartCoroutine(WaitForResourceLoaded(resourceData));
+        StartCoroutine(WaitForResourceLoaded(resourceData, screenData.assetRef));
+    }
+
+    public void RemoveCurrentScreen()
+    {
+        Addressables.Release(currentScreen);
     }
 
     #endregion
@@ -55,14 +62,13 @@ public class ScreenLoader : Singleton<ScreenLoader>
         return screenDataList.Find(e => e.screenType.Equals(screenType));
     }
 
-    private IEnumerator WaitForResourceLoaded(ResourceData resourceData)
+    private IEnumerator WaitForResourceLoaded(ResourceData resourceData, AssetReferenceGameObject reference)
     {
         yield return resourceData.opHandle;
 
         if (resourceData.opHandle.Status == AsyncOperationStatus.Succeeded)
         {
-            GameObject obj = resourceData.opHandle.Result;
-            Instantiate(obj, transform);
+            currentScreen = Addressables.InstantiateAsync(reference, transform);
             resourceData.callback?.Invoke(resourceData.opHandle.Result);
         }
     }
