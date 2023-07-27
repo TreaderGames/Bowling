@@ -3,6 +3,9 @@ using UnityEngine;
 public class BallData
 {
     private Vector3 _direction;
+    private float _ballForce;
+
+    public float pBallForce { get => _ballForce; set => _ballForce = value; }
 
     #region Public
     public Vector3 GetBallDirection()

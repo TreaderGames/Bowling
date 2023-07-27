@@ -120,3 +120,9 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - screenType: 1
+    assetRef:
+      m_AssetGUID: d1938d7e8d1fb0345a9f7ba687856e19
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0

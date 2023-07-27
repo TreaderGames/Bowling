@@ -12,12 +12,19 @@ public class BallController : MonoBehaviour, IStateListener
 
     [SerializeField] Rigidbody ball;
     [SerializeField] BallStatesData[] ballStateObjects;
+    [SerializeField] float ballMaxForce;
 
     BallData ballData;
     #region Unity
+    private void Awake()
+    {
+        ballData = new BallData();
+    }
+
     private void OnEnable()
     {
         EventController.StartListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided);
+        EventController.StartListening(EventID.EVENT_FORCE_DECIDED, HandleForceDecided);
 
         StateHandler.Instance.AddStateListener(this);
         StateHandler.Instance.ChangeState(GameState.Direction);
@@ -25,7 +32,8 @@ public class BallController : MonoBehaviour, IStateListener
 
     private void OnDisable()
     {
-        EventController.StopListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided);
+        EventController.StopListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided); 
+        EventController.StopListening(EventID.EVENT_FORCE_DECIDED, HandleForceDecided);
 
         StateHandler.Instance?.RemoveStateListener(this);
     }
@@ -68,6 +76,11 @@ public class BallController : MonoBehaviour, IStateListener
     private void HandleDirectionDecided(object arg)
     {
         ballData.UpdateBallDirection((Vector3)arg);
+    }
+
+    private void HandleForceDecided(object arg)
+    {
+        ballData.pBallForce = ballMaxForce * (float)arg;
     }
     #endregion
 }

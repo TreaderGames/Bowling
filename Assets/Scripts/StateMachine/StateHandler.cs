@@ -4,7 +4,8 @@ public enum GameState
 {
     None,
     Placement,
-    Direction
+    Direction,
+    Force
 }
 
 public class StateHandler : Singleton<StateHandler>

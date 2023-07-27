@@ -21,6 +21,14 @@ MonoBehaviour:
     m_Address: Assets/Prefabs/UI/Canvas-Direction.prefab
     m_ReadOnly: 0
     m_SerializedLabels: []
+  - m_GUID: f851def81bd0c544891f440b4ddc39f0
+    m_Address: Assets/Prefabs/UI/Canvas-Gameplay.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+  - m_GUID: d1938d7e8d1fb0345a9f7ba687856e19
+    m_Address: Assets/Prefabs/UI/Canvas-Force.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels: []
   m_ReadOnly: 0
   m_Settings: {fileID: 11400000, guid: 086db008f8cddab4ca575ea898fd554b, type: 2}
   m_SchemaSet:
