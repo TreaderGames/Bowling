@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c33b52883fcfb5748a2bf5ed59ae0721, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  turnEndDelay: 5
+  turnEndDelay: 2
