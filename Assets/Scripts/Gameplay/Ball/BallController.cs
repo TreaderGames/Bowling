@@ -11,17 +11,22 @@ public class BallController : MonoBehaviour, IStateListener
     }
 
     [SerializeField] Rigidbody ball;
-
     [SerializeField] BallStatesData[] ballStateObjects;
+
+    BallData ballData;
     #region Unity
     private void OnEnable()
     {
+        EventController.StartListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided);
+
         StateHandler.Instance.AddStateListener(this);
         StateHandler.Instance.ChangeState(GameState.Direction);
     }
 
     private void OnDisable()
     {
+        EventController.StopListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided);
+
         StateHandler.Instance?.RemoveStateListener(this);
     }
 
@@ -58,6 +63,11 @@ public class BallController : MonoBehaviour, IStateListener
     public void StateChanged(GameState gameState)
     {
         HandleStateChange(gameState);
+    }
+
+    private void HandleDirectionDecided(object arg)
+    {
+        ballData.UpdateBallDirection((Vector3)arg);
     }
     #endregion
 }
