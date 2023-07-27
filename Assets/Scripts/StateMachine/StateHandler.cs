@@ -6,7 +6,7 @@ public enum GameState
     Placement,
     Direction,
     Force,
-    BallInMotion
+    BallInMotion,
 }
 
 public class StateHandler : Singleton<StateHandler>

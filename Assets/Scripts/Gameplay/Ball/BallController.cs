@@ -15,17 +15,20 @@ public class BallController : MonoBehaviour, IStateListener
     [SerializeField] float _ballMaxForce;
 
     BallData _ballData;
+    Vector3 _ballStartPosition;
     #region Unity
     private void Awake()
     {
         _ballData = new BallData();
         _ballData.SetBallRigidBody(_ball);
+        _ballStartPosition = _ball.position;
     }
 
     private void OnEnable()
     {
         EventController.StartListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided);
         EventController.StartListening(EventID.EVENT_FORCE_DECIDED, HandleForceDecided);
+        EventController.StartListening(EventID.EVENT_TURN_END, HandleTurnEnd);
 
         StateHandler.Instance.AddStateListener(this);
         StateHandler.Instance.ChangeState(GameState.Direction);
@@ -35,6 +38,7 @@ public class BallController : MonoBehaviour, IStateListener
     {
         EventController.StopListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided); 
         EventController.StopListening(EventID.EVENT_FORCE_DECIDED, HandleForceDecided);
+        EventController.StopListening(EventID.EVENT_TURN_END, HandleTurnEnd);
 
         StateHandler.Instance?.RemoveStateListener(this);
     }
@@ -73,6 +77,13 @@ public class BallController : MonoBehaviour, IStateListener
         }
     }
 
+    private void ResetBall()
+    {
+        _ball.isKinematic = true;
+        _ball.position = _ballStartPosition;
+        StateHandler.Instance.ChangeState(GameState.Direction);
+    }
+
     #endregion
 
     #region Callbacks
@@ -89,6 +100,11 @@ public class BallController : MonoBehaviour, IStateListener
     private void HandleForceDecided(object arg)
     {
         _ballData.pBallForce = _ballMaxForce * (float)arg;
+    }
+
+    private void HandleTurnEnd(object arg)
+    {
+        ResetBall();
     }
     #endregion
 }
