@@ -264,6 +264,7 @@ Transform:
   - {fileID: 8083158465071706955}
   - {fileID: 7029596822382582837}
   - {fileID: 6112551436409924776}
+  - {fileID: 3164918662633572883}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -279,14 +280,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1be67be0c717ce46be8acc13db643c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ball: {fileID: 831770243104763184}
-  ballStateObjects:
+  _ball: {fileID: 831770243104763184}
+  _ballStateObjects:
   - state: 1
     stateObject: {fileID: 9220460370123854953}
   - state: 2
     stateObject: {fileID: 5335873527125260057}
   - state: 3
     stateObject: {fileID: 7358499960296083972}
+  - state: 4
+    stateObject: {fileID: 7376104318942372978}
+  _ballMaxForce: 100
+--- !u!1 &8455735011273662589
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3164918662633572883}
+  - component: {fileID: 7376104318942372978}
+  m_Layer: 0
+  m_Name: BallInMotion
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &3164918662633572883
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455735011273662589}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7481978358270257349}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7376104318942372978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8455735011273662589}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6902e3bfb7f8369468134bf692c065d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &3436948776105298286
 PrefabInstance:
   m_ObjectHideFlags: 0

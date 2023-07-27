@@ -10,10 +10,18 @@ public class BallPlacement : MonoBehaviour, ITakeData
     {
         _moveTransform.StopMovement();
     }
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            StateHandler.Instance.ChangeState(GameState.BallInMotion);
+        }
+    }
     #endregion
 
     #region Public
-    public void SendData(Object args)
+    public void SendData(object args)
     {
         Transform ball = (Transform)args;
         _moveTransform.StartMovement(_placementPlane.bounds, ball);

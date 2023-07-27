@@ -10,15 +10,16 @@ public class BallController : MonoBehaviour, IStateListener
         public Component stateObject;
     }
 
-    [SerializeField] Rigidbody ball;
-    [SerializeField] BallStatesData[] ballStateObjects;
-    [SerializeField] float ballMaxForce;
+    [SerializeField] Rigidbody _ball;
+    [SerializeField] BallStatesData[] _ballStateObjects;
+    [SerializeField] float _ballMaxForce;
 
-    BallData ballData;
+    BallData _ballData;
     #region Unity
     private void Awake()
     {
-        ballData = new BallData();
+        _ballData = new BallData();
+        _ballData.SetBallRigidBody(_ball);
     }
 
     private void OnEnable()
@@ -43,7 +44,7 @@ public class BallController : MonoBehaviour, IStateListener
     #region Private
     private void HandleStateChange(GameState gameState)
     {
-        foreach(BallStatesData ballStatesData in ballStateObjects)
+        foreach(BallStatesData ballStatesData in _ballStateObjects)
         {
             if (ballStatesData.state.Equals(gameState))
             {
@@ -51,7 +52,14 @@ public class BallController : MonoBehaviour, IStateListener
                 try
                 {
                     ITakeData takeData = ballStatesData.stateObject as ITakeData;
-                    takeData?.SendData(ball.transform);
+                    if (gameState.Equals(GameState.Placement))
+                    {
+                        takeData?.SendData(_ball.transform);
+                    }
+                    else if (gameState.Equals(GameState.BallInMotion))
+                    {
+                        takeData?.SendData(_ballData);
+                    }
                 }
                 finally
                 {
@@ -75,12 +83,12 @@ public class BallController : MonoBehaviour, IStateListener
 
     private void HandleDirectionDecided(object arg)
     {
-        ballData.UpdateBallDirection((Vector3)arg);
+        _ballData.UpdateBallDirection((Vector3)arg);
     }
 
     private void HandleForceDecided(object arg)
     {
-        ballData.pBallForce = ballMaxForce * (float)arg;
+        _ballData.pBallForce = _ballMaxForce * (float)arg;
     }
     #endregion
 }

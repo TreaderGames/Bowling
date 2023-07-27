@@ -8586,6 +8586,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 831770243104763184, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}
+      propertyPath: m_Mass
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 1712127653534987431, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -8637,6 +8641,10 @@ PrefabInstance:
     - target: {fileID: 7481978358270257349, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7872098923993515399, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}
+      propertyPath: _ballMaxForce
+      value: 50
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}

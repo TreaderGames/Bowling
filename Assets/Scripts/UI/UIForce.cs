@@ -47,14 +47,17 @@ public class UIForce : MonoBehaviour
 
     private void EndForceStage()
     {
-        EventController.TriggerEvent(EventID.EVENT_FORCE_DECIDED, GetForceMultiplier(forceBar.value));
+        float force = GetForceMultiplier(forceBar.value);
+        //Debug.LogError("Force: " + force);
+        EventController.TriggerEvent(EventID.EVENT_FORCE_DECIDED, force);
         StateHandler.Instance.ChangeState(GameState.Placement);
         canUpdate = false;
     }
 
     private float GetForceMultiplier(float value)
     {
-        float multiplier = Mathf.Abs(value - maxPoint);
+        float multiplier = maxPoint / (Mathf.Abs(value - maxPoint) + maxPoint);
+        //Debug.LogError("GetForceMultiplier: " + value + " maxPoint:" + maxPoint + " multiplier: " + multiplier);
         return multiplier;
     }
     #endregion

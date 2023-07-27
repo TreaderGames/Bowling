@@ -1,6 +1,6 @@
-using UnityEngine;
+using System;
 
 public interface ITakeData
 {
-    public void SendData(Object args);
+    public void SendData(object args);
 }
