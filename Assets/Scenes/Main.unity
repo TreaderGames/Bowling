@@ -627,10 +627,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1366773354023862002, guid: 50f63a0b13a5ce9438c0e684a6ac92cc, type: 3}
-      propertyPath: _ballMaxForce
-      value: 30
-      objectReference: {fileID: 0}
     - target: {fileID: 2405382174717100989, guid: 50f63a0b13a5ce9438c0e684a6ac92cc, type: 3}
       propertyPath: m_Name
       value: Bowling_Alley_Scene

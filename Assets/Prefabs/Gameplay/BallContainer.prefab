@@ -290,7 +290,7 @@ MonoBehaviour:
     stateObject: {fileID: 7358499960296083972}
   - state: 4
     stateObject: {fileID: 7376104318942372978}
-  _ballMaxForce: 100
+  _ballMaxForce: 57
 --- !u!1 &8455735011273662589
 GameObject:
   m_ObjectHideFlags: 0
