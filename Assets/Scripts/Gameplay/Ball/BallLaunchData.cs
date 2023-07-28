@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BallData
+public class BallLaunchData
 {
     private Vector3 _direction;
 

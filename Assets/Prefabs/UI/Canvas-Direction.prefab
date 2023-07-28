@@ -89,9 +89,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 95f0dc068f6886c4cb0a853fa37a0370, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _pointARotation: {x: 0, y: 0, z: -30}
-  _pointBRotation: {x: 0, y: 0, z: 30}
-  _speed: 1
+  _pointARotation: {x: 0, y: 0, z: -20}
+  _pointBRotation: {x: 0, y: 0, z: 20}
+  _speed: 0.8
   _canPlay: 1
 --- !u!1 &2130946347772630607
 GameObject:

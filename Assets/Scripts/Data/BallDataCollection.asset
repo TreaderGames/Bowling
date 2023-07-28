@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b9a6f5c70e792a42a96a86a199b000b, type: 3}
+  m_Name: BallDataCollection
+  m_EditorClassIdentifier: 
+  ballDatas:
+  - materialType: 0
+    physicMaterial: {fileID: 13400000, guid: 8c5533c4c3ab125438ab8d7623400286, type: 2}
+  - materialType: 1
+    physicMaterial: {fileID: 13400000, guid: edcc3aaee413cc742b39849c0e716aa7, type: 2}

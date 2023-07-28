@@ -9,6 +9,8 @@ public class TurnHandler : MonoBehaviour
 
     float currentDelta;
     bool canRunDelay;
+    int turnCount = 0;
+
     #region Unity
     private void OnEnable()
     {
@@ -28,13 +30,26 @@ public class TurnHandler : MonoBehaviour
             currentDelta += Time.deltaTime;
             if(currentDelta >= turnEndDelay)
             {
-                currentDelta = 0;
-                canRunDelay = false;
-                EventController.TriggerEvent(EventID.EVENT_TURN_END);
+                ResolveTurn();
             }
         }
     }
 
+    #endregion
+
+    #region Private
+    private void ResolveTurn()
+    {
+        currentDelta = 0;
+        canRunDelay = false;
+        turnCount++;
+        EventController.TriggerEvent(EventID.EVENT_TURN_END);
+        if (turnCount == GameConfig.MAX_TURNS)
+        {
+            turnCount = 0;
+            EventController.TriggerEvent(EventID.EVENT_MATCH_END);
+        }
+    }
     #endregion
 
     #region Callback

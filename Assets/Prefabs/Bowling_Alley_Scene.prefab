@@ -8517,16 +8517,28 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 2791802143472104427, guid: 1037acabda2339946b0d00d97a7552cc, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791802143472104427, guid: 1037acabda2339946b0d00d97a7552cc, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791802143472104427, guid: 1037acabda2339946b0d00d97a7552cc, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2791802143472104427, guid: 1037acabda2339946b0d00d97a7552cc, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0
+      value: -0.23
       objectReference: {fileID: 0}
     - target: {fileID: 2791802143472104427, guid: 1037acabda2339946b0d00d97a7552cc, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.02
+      value: 0.01
       objectReference: {fileID: 0}
     - target: {fileID: 2791802143472104427, guid: 1037acabda2339946b0d00d97a7552cc, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.1999998
+      value: -3.5
       objectReference: {fileID: 0}
     - target: {fileID: 2791802143472104427, guid: 1037acabda2339946b0d00d97a7552cc, type: 3}
       propertyPath: m_LocalRotation.w
@@ -8570,6 +8582,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 3169376523962657263}
     m_Modifications:
+    - target: {fileID: 744990457964392243, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 13400000, guid: 8c5533c4c3ab125438ab8d7623400286, type: 2}
     - target: {fileID: 772939921193126487, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.9
@@ -8644,7 +8660,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7872098923993515399, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}
       propertyPath: _ballMaxForce
-      value: 400
+      value: 600
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 609cca0d6c16d8249b4b14f05312c6db, type: 3}

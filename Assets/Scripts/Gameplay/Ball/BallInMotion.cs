@@ -2,12 +2,12 @@ using UnityEngine;
 
 public class BallInMotion : MonoBehaviour, ITakeData
 {
-    BallData ballData;
+    BallLaunchData ballData;
 
     #region Public
     public void SendData(object args)
     {
-        ballData = (BallData)args;
+        ballData = (BallLaunchData)args;
         PlayTurn();
     }
     #endregion

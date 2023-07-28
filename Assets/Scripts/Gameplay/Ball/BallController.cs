@@ -14,12 +14,12 @@ public class BallController : MonoBehaviour, IStateListener
     [SerializeField] BallStatesData[] _ballStateObjects;
     [SerializeField] float _ballMaxForce;
 
-    BallData _ballData;
+    BallLaunchData _ballData;
     Vector3 _ballStartPosition;
     #region Unity
     private void Awake()
     {
-        _ballData = new BallData();
+        _ballData = new BallLaunchData();
         _ballData.SetBallRigidBody(_ball);
         _ballStartPosition = _ball.position;
     }
