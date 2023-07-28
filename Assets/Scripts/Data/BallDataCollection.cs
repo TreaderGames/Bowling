@@ -2,8 +2,10 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "BallDataCollection", menuName = "ScriptableObjects/BallDataCollection", order = 1)]
+[Serializable]
 public class BallDataCollection : ScriptableObject
 {
+    [Serializable]
     public enum MaterialType
     {
         Metal,

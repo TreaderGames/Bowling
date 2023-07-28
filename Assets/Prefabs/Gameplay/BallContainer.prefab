@@ -281,6 +281,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _ball: {fileID: 831770243104763184}
+  _ballCollider: {fileID: 744990457964392243}
   _ballStateObjects:
   - state: 1
     stateObject: {fileID: 9220460370123854953}
@@ -291,6 +292,7 @@ MonoBehaviour:
   - state: 4
     stateObject: {fileID: 7376104318942372978}
   _ballMaxForce: 600
+  _ballDataCollection: {fileID: 11400000, guid: 51682876fd1dc8a46bb09a1ff81c5783, type: 2}
 --- !u!1 &8455735011273662589
 GameObject:
   m_ObjectHideFlags: 0
@@ -392,6 +394,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 539460a0540804a46958f9c387c304e6, type: 3}
+--- !u!135 &744990457964392243 stripped
+SphereCollider:
+  m_CorrespondingSourceObject: {fileID: 2730521044933518941, guid: 539460a0540804a46958f9c387c304e6, type: 3}
+  m_PrefabInstance: {fileID: 3436948776105298286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &772939921193126487 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2668513006477312825, guid: 539460a0540804a46958f9c387c304e6, type: 3}

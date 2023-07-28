@@ -11,11 +11,16 @@ public class BallController : MonoBehaviour, IStateListener
     }
 
     [SerializeField] Rigidbody _ball;
+    [SerializeField] Collider _ballCollider;
     [SerializeField] BallStatesData[] _ballStateObjects;
     [SerializeField] float _ballMaxForce;
+    [SerializeField] BallDataCollection _ballDataCollection;
 
     BallLaunchData _ballData;
     Vector3 _ballStartPosition;
+    BallDataCollection.MaterialType[] _materialTypes;
+    int _currentBallIndex = 0;
+
     #region Unity
     private void Awake()
     {
@@ -29,6 +34,7 @@ public class BallController : MonoBehaviour, IStateListener
         EventController.StartListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided);
         EventController.StartListening(EventID.EVENT_FORCE_DECIDED, HandleForceDecided);
         EventController.StartListening(EventID.EVENT_TURN_END, HandleTurnEnd);
+        EventController.StartListening(EventID.EVENT_MATCH_END, HandleMatchEnd);
 
         StateHandler.Instance.AddStateListener(this);
         StateHandler.Instance.ChangeState(GameState.Direction);
@@ -39,8 +45,16 @@ public class BallController : MonoBehaviour, IStateListener
         EventController.StopListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided); 
         EventController.StopListening(EventID.EVENT_FORCE_DECIDED, HandleForceDecided);
         EventController.StopListening(EventID.EVENT_TURN_END, HandleTurnEnd);
+        EventController.StopListening(EventID.EVENT_MATCH_END, HandleMatchEnd);
 
         StateHandler.Instance?.RemoveStateListener(this);
+    }
+
+    private void Start()
+    {
+        _materialTypes = PlayerDataController.pInstance.playerData.playerBallCollection;
+        System.Random random = new System.Random();
+        random.Shuffle(_materialTypes);
     }
 
     #endregion
@@ -79,6 +93,11 @@ public class BallController : MonoBehaviour, IStateListener
 
     private void ResetBall()
     {
+        if (_currentBallIndex < _materialTypes.Length)
+        {
+            BallDataCollection.BallData ballData = _ballDataCollection.GetBallData(_materialTypes[_currentBallIndex]);
+            _ballCollider.sharedMaterial = ballData.physicMaterial;
+        }
         _ball.isKinematic = true;
         _ball.position = _ballStartPosition;
         StateHandler.Instance.ChangeState(GameState.Direction);
@@ -104,7 +123,13 @@ public class BallController : MonoBehaviour, IStateListener
 
     private void HandleTurnEnd(object arg)
     {
+        _currentBallIndex++;
         ResetBall();
+    }
+
+    private void HandleMatchEnd(object arg)
+    {
+        _currentBallIndex = 0;
     }
     #endregion
 }
