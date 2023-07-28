@@ -40,6 +40,7 @@ public class PinsController : MonoBehaviour
             _bowlingPins[i].ResetPin();
         }
 
+        PlayerDataController.pInstance.UpdateScore(_pinDropCount, _ballTouchCount);
         Debug.LogError("Ball Touch Count: " + _ballTouchCount + " Pin drops: " + _pinDropCount);
     }
     #endregion

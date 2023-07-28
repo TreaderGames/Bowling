@@ -97,6 +97,7 @@ public class BallController : MonoBehaviour, IStateListener
         {
             BallDataCollection.BallData ballData = _ballDataCollection.GetBallData(_materialTypes[_currentBallIndex]);
             _ballCollider.sharedMaterial = ballData.physicMaterial;
+            PlayerDataController.pInstance.UpdateCurrentMaterial(_materialTypes[_currentBallIndex]);
         }
         _ball.isKinematic = true;
         _ball.position = _ballStartPosition;
