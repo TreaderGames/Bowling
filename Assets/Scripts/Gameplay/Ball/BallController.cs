@@ -37,7 +37,7 @@ public class BallController : MonoBehaviour, IStateListener
         EventController.StartListening(EventID.EVENT_MATCH_END, HandleMatchEnd);
 
         StateHandler.Instance.AddStateListener(this);
-        StateHandler.Instance.ChangeState(GameState.Direction);
+        StateHandler.Instance.ChangeState(GameState.None);
     }
 
     private void OnDisable()

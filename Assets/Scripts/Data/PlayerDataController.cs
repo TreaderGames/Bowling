@@ -8,6 +8,7 @@ public class PlayerDataController : MonoBehaviour
     public class PlayerData
     {
         public BallDataCollection.MaterialType[] playerBallCollection;
+        public string name;
     }
 
     [SerializeField] BallDataCollection.MaterialType[] defaultBallCollection = new BallDataCollection.MaterialType[GameConfig.MAX_TURNS];
