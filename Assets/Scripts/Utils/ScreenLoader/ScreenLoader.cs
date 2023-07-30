@@ -8,7 +8,8 @@ using System.Collections;
 public enum ScreenType
 {
     Direction,
-    Force
+    Force,
+    GameOver
 }
 
 public class ScreenLoader : Singleton<ScreenLoader>

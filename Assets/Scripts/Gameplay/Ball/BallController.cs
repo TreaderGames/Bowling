@@ -101,7 +101,15 @@ public class BallController : MonoBehaviour, IStateListener
         }
         _ball.isKinematic = true;
         _ball.position = _ballStartPosition;
-        StateHandler.Instance.ChangeState(GameState.Direction);
+
+        if (_currentBallIndex < GameConfig.MAX_TURNS)
+        {
+            StateHandler.Instance.ChangeState(GameState.Direction);
+        }
+        else
+        {
+            StateHandler.Instance.ChangeState(GameState.None);
+        }
     }
 
     #endregion
@@ -131,6 +139,7 @@ public class BallController : MonoBehaviour, IStateListener
     private void HandleMatchEnd(object arg)
     {
         _currentBallIndex = 0;
+        ScreenLoader.Instance.LoadScreen(ScreenType.GameOver, null);
     }
     #endregion
 }

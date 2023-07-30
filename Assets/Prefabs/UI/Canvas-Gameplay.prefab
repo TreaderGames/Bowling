@@ -127,6 +127,12 @@ MonoBehaviour:
       m_SubObjectName: 
       m_SubObjectType: 
       m_EditorAssetChanged: 0
+  - screenType: 2
+    assetRef:
+      m_AssetGUID: 8ba27ae4a36382941b47c6bc6ff9a9f1
+      m_SubObjectName: 
+      m_SubObjectType: 
+      m_EditorAssetChanged: 0
 --- !u!1001 &4078245917930746223
 PrefabInstance:
   m_ObjectHideFlags: 0
