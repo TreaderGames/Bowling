@@ -14,7 +14,6 @@ public class BowlingPin : MonoBehaviour
     {
         _initialPos = transform.position;
         _initRot = transform.rotation;
-        Debug.LogError("Rot Dist: " + Vector3.Dot(transform.up, Vector3.up));
     }
 
     private void OnCollisionEnter(Collision collision)

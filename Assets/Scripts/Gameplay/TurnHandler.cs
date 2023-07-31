@@ -43,7 +43,7 @@ public class TurnHandler : MonoBehaviour
         currentDelta = 0;
         canRunDelay = false;
         turnCount++;
-        EventController.TriggerEvent(EventID.EVENT_TURN_END);
+        EventController.TriggerEvent(EventID.EVENT_TURN_END, turnCount);
         if (turnCount == GameConfig.MAX_TURNS)
         {
             turnCount = 0;

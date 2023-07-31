@@ -6,4 +6,5 @@ public enum EventID
     EVENT_BALL_OUT_OF_PLAY,
     EVENT_TURN_END,
     EVENT_MATCH_END,
+    EVENT_SCORE_UPDATED
 }

@@ -63,6 +63,7 @@ public class PlayerDataController : MonoBehaviour
             PlayerPrefs.Save();
         }
     }
+
     #endregion
 
     #region Public
@@ -79,6 +80,8 @@ public class PlayerDataController : MonoBehaviour
 
         PlayerRoundScore playerRoundScore = new PlayerRoundScore(score, pinsDown, _currentMaterial);
         playerRoundScores.Add(playerRoundScore);
+
+        EventController.TriggerEvent(EventID.EVENT_SCORE_UPDATED);
     }
 
     public void UpdateCurrentMaterial(BallDataCollection.MaterialType materialType)

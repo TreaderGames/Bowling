@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
@@ -57,14 +58,16 @@ public class UIInGame : MonoBehaviour, IStateListener
         _pinsDropped.text = "Pins: " + totalPins.ToString();
     }
 
-    private void ResetData()
+    IEnumerator DelayedResetData()
     {
+        yield return new WaitForEndOfFrame();
         for (int i = 0; i < _roundScores.Length; i++)
         {
             _roundScores[i].gameObject.SetActive(false);
         }
         _totalScore.text = "Score: 0";
         _pinsDropped.text = "Pins: 0";
+        _currentMaterial.text = "Material: " + PlayerDataController.pInstance.GetCurrentMaterial().ToString();
     }
     #endregion
 
@@ -72,7 +75,7 @@ public class UIInGame : MonoBehaviour, IStateListener
 
     private void HandleMatchEnd(object arg)
     {
-        ResetData();
+        StartCoroutine(DelayedResetData());
     }
 
     private void HandleTurnEnd(object arg)

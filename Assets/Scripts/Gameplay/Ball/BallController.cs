@@ -33,7 +33,7 @@ public class BallController : MonoBehaviour, IStateListener
     {
         EventController.StartListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided);
         EventController.StartListening(EventID.EVENT_FORCE_DECIDED, HandleForceDecided);
-        EventController.StartListening(EventID.EVENT_TURN_END, HandleTurnEnd);
+        EventController.StartListening(EventID.EVENT_SCORE_UPDATED, HandleScoreUpdated);
         EventController.StartListening(EventID.EVENT_MATCH_END, HandleMatchEnd);
 
         StateHandler.Instance.AddStateListener(this);
@@ -44,7 +44,7 @@ public class BallController : MonoBehaviour, IStateListener
     {
         EventController.StopListening(EventID.EVENT_DIRECTION_DECIDED, HandleDirectionDecided); 
         EventController.StopListening(EventID.EVENT_FORCE_DECIDED, HandleForceDecided);
-        EventController.StopListening(EventID.EVENT_TURN_END, HandleTurnEnd);
+        EventController.StopListening(EventID.EVENT_SCORE_UPDATED, HandleScoreUpdated);
         EventController.StopListening(EventID.EVENT_MATCH_END, HandleMatchEnd);
 
         StateHandler.Instance?.RemoveStateListener(this);
@@ -122,7 +122,7 @@ public class BallController : MonoBehaviour, IStateListener
         _ballData.pBallForce = _ballMaxForce * (float)arg;
     }
 
-    private void HandleTurnEnd(object arg)
+    private void HandleScoreUpdated(object arg)
     {
         _currentBallIndex++;
         ResetBall();
