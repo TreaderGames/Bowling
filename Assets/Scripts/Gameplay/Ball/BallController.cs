@@ -55,6 +55,7 @@ public class BallController : MonoBehaviour, IStateListener
         _materialTypes = PlayerDataController.pInstance.playerData.playerBallCollection;
         System.Random random = new System.Random();
         random.Shuffle(_materialTypes);
+        ResetBall();
     }
 
     #endregion
@@ -101,15 +102,6 @@ public class BallController : MonoBehaviour, IStateListener
         }
         _ball.isKinematic = true;
         _ball.position = _ballStartPosition;
-
-        if (_currentBallIndex < GameConfig.MAX_TURNS)
-        {
-            StateHandler.Instance.ChangeState(GameState.Direction);
-        }
-        else
-        {
-            StateHandler.Instance.ChangeState(GameState.None);
-        }
     }
 
     #endregion
@@ -134,11 +126,21 @@ public class BallController : MonoBehaviour, IStateListener
     {
         _currentBallIndex++;
         ResetBall();
+
+        if (_currentBallIndex < GameConfig.MAX_TURNS)
+        {
+            StateHandler.Instance.ChangeState(GameState.Direction);
+        }
+        else
+        {
+            StateHandler.Instance.ChangeState(GameState.None);
+        }
     }
 
     private void HandleMatchEnd(object arg)
     {
         _currentBallIndex = 0;
+        ResetBall();
         ScreenLoader.Instance.LoadScreen(ScreenType.GameOver, null);
     }
     #endregion

@@ -74,10 +74,11 @@ public class PlayerDataController : MonoBehaviour
         }
 
         int pinTouchValue = _currentMaterial.Equals(BallDataCollection.MaterialType.Metal) ? GameConfig.METAL_TOUCH_VALUE : GameConfig.RUBBER_TOUCH_VALUE;
-        int pinDownValue = _currentMaterial.Equals(BallDataCollection.MaterialType.Metal) ? GameConfig.METAL_DOWN_VALUE : GameConfig.METAL_DOWN_VALUE;
+        int pinDownValue = _currentMaterial.Equals(BallDataCollection.MaterialType.Metal) ? GameConfig.METAL_DOWN_VALUE : GameConfig.RUBBER_DOWN_VALUE;
         int score = pinDownValue * pinsDown + pinTouchValue * pinsTouch;
 
-        playerRoundScores.Add(new PlayerRoundScore(score, pinsDown, _currentMaterial));
+        PlayerRoundScore playerRoundScore = new PlayerRoundScore(score, pinsDown, _currentMaterial);
+        playerRoundScores.Add(playerRoundScore);
     }
 
     public void UpdateCurrentMaterial(BallDataCollection.MaterialType materialType)
@@ -88,6 +89,11 @@ public class PlayerDataController : MonoBehaviour
     public List<PlayerRoundScore> GetPlayerRoundScores()
     {
         return playerRoundScores;
+    }
+
+    public BallDataCollection.MaterialType GetCurrentMaterial()
+    {
+        return _currentMaterial;
     }
     #endregion
 }
